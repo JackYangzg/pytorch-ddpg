@@ -22,3 +22,13 @@ def hard_update(target, source):
     for target_param, param in zip(target.parameters(), source.parameters()):
             target_param.data.copy_(param.data)
 
+
+def process_obs(observation):
+    pass
+
+def normal_action(action):
+    pass
+
+def reverse_action(action):
+    pass
+

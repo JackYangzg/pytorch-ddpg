@@ -26,9 +26,11 @@ class Evaluator(object):
         if not self.model_queue.empty():
             actor_state, critic_state = self.model_queue.get()
             self.model.load_state_dict(actor_state, critic_state)
-        return 0
+        obs = process_obs(observation)
+        action = self.model.select_action(obs)
+        return reverse_action(action)
 
-    def __call__(self, env):
+    def evaluator(self, env):
         result = []
         for episode in range(self.num_episodes):
 
